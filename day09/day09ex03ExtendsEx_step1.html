@@ -30,8 +30,8 @@
     }
 
     const p1 = new People("이순신", 44);
-    p1.display();
-    p1.method2();
+    //p1.display();
+    //p1.method2();
 
     // People 상속 받아서 다른 클래스 선언
     // 옛날 방식은 prototype을 이용한 상속
@@ -42,6 +42,11 @@
     }
     Student.prototype = new People();
     Student.constructor = Student;
+    Student.prototype.display = function() {
+        People.prototype.display.call(this);
+        console.log(this.age + "세")
+        console.log(this.grade + "학년");
+    }
 
     const student1 = new Student("일지매", 22, 3);
     student1.display();
