@@ -41,7 +41,7 @@
         this.grade = grade;
     }
     Student.prototype = new People();
-    Student.constructor = Student;
+    Student.prototype.constructor = Student;
     Student.prototype.display = function() {
         People.prototype.display.call(this);
         console.log(this.age + "세")

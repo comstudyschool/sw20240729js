@@ -26,10 +26,30 @@
     Dog.prototype.constructor = Dog;
     Dog.prototype.mkSound = function() {
         Animal.prototype.mkSound.call(this);
-        console.log(this.age + "살");
     }
 
-    new Dog("해피","깽깽",12).mkSound();
+    //new Dog("해피","깽깽",12).mkSound();
+    function Cat(name, sound, age) {
+        Animal.call(this, name, sound);
+        this.age = age;
+    }
+    Cat.prototype = Object.create(Animal.prototype);
+    Cat.prototype.constructor = Cat;
+    Cat.prototype.mkSound = function() {
+        Animal.prototype.mkSound.call(this);
+    }
+
+    const animals = [
+        new Dog("해피","멍멍",10),
+        new Cat("나비","야옹",9),
+        new Dog("메리","왈왈",10),
+        new Cat("네로","미야옹",3),
+        new Cat("네꼬","에노",5)
+    ];
+
+    animals.forEach(function(ani) {
+        ani.mkSound();
+    });
 </script>
 
 </body>
