@@ -6,7 +6,6 @@
     <title>Document</title>
     <style>
         #box {
-            position: relative;
             border: 5px solid navy;
             width: 300px;
             height: 300px;
@@ -41,36 +40,6 @@
             line-height: 100px;
             box-sizing: border-box;
         }
-        #line1 {
-            position: absolute;
-            left: 0px;
-            top: 0px;
-        }
-        #line2 {
-            position: absolute;
-            left: 0px;
-            top: 100px;
-        }
-        #line3 {
-            position: absolute;
-            left: 0px;
-            top: 200px;
-        }
-        #line4 {
-            position: absolute;
-            left: 0px;
-            top: 0px;
-        }
-        #line5 {
-            position: absolute;
-            left: 100px;
-            top: 0px;
-        }
-        #line6 {
-            position: absolute;
-            left: 200px;
-            top: 0px;
-        }
     </style>
 </head>
 <body>
@@ -78,12 +47,6 @@
     <button id="startBtn">START</button><button id="stopBtn">STOP</button>
     <hr>
     <div id="box">
-        <div id="line1"><img src="images/confirm1.png"></div>
-        <div id="line2"><img src="images/confirm1.png"></div>
-        <div id="line3"><img src="images/confirm1.png"></div>
-        <div id="line4"><img src="images/confirm2.png"></div>
-        <div id="line5"><img src="images/confirm2.png"></div>
-        <div id="line6"><img src="images/confirm2.png"></div>
     </div>
 
 <script>
@@ -116,18 +79,14 @@
     }
 
     const divBox = document.querySelector("#box");
-    const matrixArr = [
-        [new Box(), new Box(), new Box()],
-        [new Box(), new Box(), new Box()],
-        [new Box(), new Box(), new Box()]
+    const boxArr = [
+        new Box(), new Box(), new Box(),
+        new Box(), new Box(), new Box(),
+        new Box(), new Box(), new Box()
     ];
-    const boxArr = [];
-    for(var i=0; i<3; i++) {
-        for(var j=0; j<3; j++) {
-            boxArr.push(matrixArr[i][i]);
-            const newBox = matrixArr[i][i].init();
-            divBox.appendChild(newBox);
-        }
+    for(var i=0; i<9; i++) {
+        const newBox = boxArr[i].init();
+        divBox.appendChild(newBox);
     }
 
     const startBtn = document.querySelector("#startBtn");
